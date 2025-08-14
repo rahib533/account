@@ -27,6 +27,9 @@ public class Customer {
     @Column(nullable = false)
     private String lastName;
 
+    @Column(nullable = true)
+    private ModelStatus status = ModelStatus.ACTIVE;
+
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
     @JsonManagedReference
     @ToString.Exclude @EqualsAndHashCode.Exclude

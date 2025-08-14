@@ -17,8 +17,6 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Getter
-@Setter
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -30,6 +28,9 @@ public class Account {
     @Column(nullable = false)
     @CreationTimestamp
     private LocalDateTime creationDate;
+
+    @Column(nullable = true)
+    private ModelStatus status = ModelStatus.ACTIVE;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id", nullable = false)

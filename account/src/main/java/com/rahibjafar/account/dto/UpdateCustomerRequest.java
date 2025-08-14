@@ -1,13 +1,11 @@
 package com.rahibjafar.account.dto;
 
-import com.rahibjafar.account.model.ModelStatus;
 import java.util.UUID;
 
-public record CustomerDto(
+public record UpdateCustomerRequest(
         UUID id,
         String cif,
         String firstName,
-        String lastName,
-        ModelStatus status
+        String lastName
 ) {
 }

@@ -33,6 +33,9 @@ public class Transaction {
     @CreationTimestamp
     private LocalDateTime creationDate;
 
+    @Column(nullable = true)
+    private ModelStatus status = ModelStatus.ACTIVE;
+
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "account_id", nullable = false)
     @JsonBackReference

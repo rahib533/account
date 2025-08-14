@@ -9,6 +9,6 @@ import java.util.List;
 public interface TransactionMapper {
     TransactionDto toDto(Transaction transaction);
     Transaction toEntity(TransactionDto transactionDto);
-    List<TransactionDto> toDtoList(List<Transaction> transactions);
-    List<Transaction> toEntityList(List<TransactionDto> transactionDtos);
+    List<TransactionDto> toDto(List<Transaction> transactions);
+    List<Transaction> toEntity(List<TransactionDto> transactionDtos);
 }

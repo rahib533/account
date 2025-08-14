@@ -3,7 +3,7 @@ spring:
     name: account
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/accountdb
+    url: jdbc:postgresql://localhost:5432/accountdb?currentSchema=public
     username: postgres
     password: secret123
 
@@ -19,5 +19,8 @@ server:
   port: 2727
 
 springdoc:
+  swagger-ui:
+    tags-sorter: alpha
+    operations-sorter: alpha
   api-docs:
     path: /api-docs
