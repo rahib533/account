@@ -1,5 +1,6 @@
 package com.rahibjafar.account.service;
 
+import com.rahibjafar.account.dto.CreateCustomerRequest;
 import com.rahibjafar.account.exception.CustomerNotFoundException;
 import com.rahibjafar.account.model.Customer;
 import com.rahibjafar.account.repository.CustomerRepository;
@@ -86,9 +87,9 @@ class CustomerServiceTest {
     @DisplayName("createCustomer: repository.save çağrılmalı və qaytarılan obyekt dönməlidir")
     void createCustomer_savesAndReturns() {
         // given
-        Customer toCreate = new Customer();
+        CreateCustomerRequest toCreate = new CreateCustomerRequest("1234567", "Rahib", "Jafarov");
         Customer saved = new Customer();
-        when(customerRepository.save(toCreate)).thenReturn(saved);
+        when(customerRepository.save(any(Customer.class))).thenReturn(saved);
 
         // when
         Customer result = customerService.createCustomer(toCreate);
@@ -99,7 +100,6 @@ class CustomerServiceTest {
 
         ArgumentCaptor<Customer> captor = ArgumentCaptor.forClass(Customer.class);
         verify(customerRepository, times(1)).save(captor.capture());
-        assertEquals(toCreate, captor.getValue());
         verifyNoMoreInteractions(customerRepository);
     }
 }

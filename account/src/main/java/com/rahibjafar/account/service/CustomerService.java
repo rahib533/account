@@ -1,5 +1,6 @@
 package com.rahibjafar.account.service;
 
+import com.rahibjafar.account.dto.CreateCustomerRequest;
 import com.rahibjafar.account.dto.UpdateCustomerRequest;
 import com.rahibjafar.account.exception.CustomerNotFoundException;
 import com.rahibjafar.account.model.Customer;
@@ -26,7 +27,12 @@ public class CustomerService {
     }
 
     @Transactional
-    public Customer createCustomer(final Customer customer) {
+    public Customer createCustomer(final CreateCustomerRequest createCustomerRequest) {
+        Customer customer = new Customer();
+        customer.setCif(createCustomerRequest.cif());
+        customer.setFirstName(createCustomerRequest.firstName());
+        customer.setLastName(createCustomerRequest.lastName());
+
         return customerRepository.save(customer);
     }
 

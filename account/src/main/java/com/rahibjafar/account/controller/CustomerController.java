@@ -30,7 +30,7 @@ public class CustomerController {
 
     @PostMapping("/create")
     public CustomerDto create(@RequestBody CreateCustomerRequest createCustomerRequest) {
-        return customerMapper.toDto(customerService.createCustomer(customerMapper.toEntity(createCustomerRequest)));
+        return customerMapper.toDto(customerService.createCustomer(createCustomerRequest));
     }
 
     @PutMapping("/update")
